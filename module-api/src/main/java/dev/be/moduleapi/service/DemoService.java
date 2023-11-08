@@ -23,4 +23,8 @@ public class DemoService {
     public String find() {
         return "find";
     }
+
+    public String exception() {
+        return "exception";
+    }
 }
