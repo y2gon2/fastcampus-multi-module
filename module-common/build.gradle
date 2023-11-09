@@ -37,3 +37,17 @@ tasks.named('test') {
 }
 
 tasks.register("prepareKotlinBuildScriptModel") {}
+
+// bootJar 를 true 설정 시 .jar 파일 생성 해당 파일은 dependicies, class, resources 를 포함함
+// 그러나  common module 은 `XXX.jar` 파일이 필요 없음.
+// (만약 true 이면 main class 를 찾는다. 그런데 해당 module 에선 삭제되었기 때문에 에러가 발행함.)
+tasks.bootJar { enabled = false }
+
+// bootJar :       `XXX.jar`  파일 생성
+// jar     : `XXX-plain.jar`  파일 생성 -> dependency 를 가지고 있지 않음. -> 서버 실행 X
+tasks.jar { enabled = true }
+
+// ./gradlew clean :module-api:buildNeeded --stacktrace --info --refresh-dependencies -x test
+//   기존 build 폴더내용 삭제하고, build module stacktrace 보여주고, logging leve info, 의존성 refresh, test code (pass/fail) skip 하여 build 해라
+
+// debug -> info -> warn -> error

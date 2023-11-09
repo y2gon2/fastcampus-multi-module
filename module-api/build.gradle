@@ -37,3 +37,9 @@ tasks.named('test') {
 }
 
 tasks.register("prepareKotlinBuildScriptModel") {}
+
+// ./gradlew clean :module-api:buildNeeded --stacktrace --info --refresh-dependencies -x test
+//   기존 build 폴더내용 삭제하고, build module stacktrace 보여주고, logging leve info, 의존성 refresh, test code (pass/fail) skip 하여 build 해라
+
+// java -jar module-api-0.0.1-SNAPSHOT.jar
+// debug -> info -> warn -> error
